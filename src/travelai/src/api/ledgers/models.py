@@ -1,5 +1,10 @@
-class TravelAILedgerEntryModel():
-    # Sqlalchemy model
+import enum
+from sqlalchemy import Column
+from src.monorepo.core.db.models import LedgerEntry
+from src.travelai.src.api.ledgers.schemas import TravelAppLedgerOperation
+
+
+class TravelAILedgerEntryModel(LedgerEntry):
     __tablename__ = "ledger_entries"
 
-    operation: ? # What type should this be? Note: It should not be str.
+    operation = Column(enum.Enum(TravelAppLedgerOperation), nullable=False)

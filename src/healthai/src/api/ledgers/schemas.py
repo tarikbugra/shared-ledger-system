@@ -1,13 +1,11 @@
-from monorepo.core.ledgers.schemas import BaseLedgerOperation
+import enum
+from src.monorepo.core.ledgers.enums import create_extended_enum
+from src.monorepo.core.ledgers.schemas import BaseLedgerOperation
 
 
-class HealthAILedgerOperation(BaseLedgerOperation): 
-    # Shared operations
-    DAILY_REWARD = "DAILY_REWARD"
-    SIGNUP_CREDIT = "SIGNUP_CREDIT"
-    CREDIT_SPEND = "CREDIT_SPEND"
-    CREDIT_ADD = "CREDIT_ADD"
-
-    # App-specific operations
+class HealthAILedgerOperation(enum.Enum):
     CONTENT_CREATION = "CONTENT_CREATION"
     CONTENT_ACCESS = "CONTENT_ACCESS"
+
+
+HealthAppLedgerOperation = create_extended_enum("AppLedgerOperation", BaseLedgerOperation, HealthAILedgerOperation)
