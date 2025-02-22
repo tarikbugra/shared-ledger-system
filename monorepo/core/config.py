@@ -11,6 +11,11 @@ class Config:
     POSTGRES_PASSWORD: str
     POSTGRES_HOST: str
     POSTGRES_PORT: str
+    PROJECT_NAME: str
+    DESCRIPTION: str
+    VERSION: str
+    CONTACT_NAME: str
+    CONTACT_MAIL: str
 
     LEDGER_OPERATION_CONFIG = {
         "DAILY_REWARD": 1,
@@ -33,4 +38,9 @@ settings = Config(
     POSTGRES_PASSWORD=getenv("POSTGRES_PASSWORD"),
     POSTGRES_HOST=getenv("POSTGRES_HOST"),
     POSTGRES_PORT=getenv("POSTGRES_PORT"),
+    PROJECT_NAME=getenv("PROJECT_NAME"),
+    DESCRIPTION=getenv("DESCRIPTION"),
+    VERSION=getenv("VERSION"),
+    CONTACT_NAME=getenv("CONTACT_NAME"),
+    CONTACT_MAIL=getenv("CONTACT_MAIL"),
 )

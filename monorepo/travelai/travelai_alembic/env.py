@@ -3,6 +3,7 @@ import sys
 from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config, pool
+from sqlalchemy.sql import text
 
 from alembic import context
 
@@ -11,7 +12,7 @@ sys.path.insert(
 )
 
 from monorepo.core.db.models import Base
-from monorepo.healthai.src.api.ledgers.models import HealthAILedgerEntryModel
+from monorepo.travelai.src.api.ledgers.models import TravelAILedgerEntryModel
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -72,8 +73,13 @@ def run_migrations_online() -> None:
     )
 
     with connectable.connect() as connection:
-        context.configure(connection=connection, target_metadata=target_metadata)
-
+        context.configure(
+            connection=connection,
+            target_metadata=target_metadata,
+            include_schemas=True,
+            version_table_schema="travelai",
+        )
+        connection.execute(text("CREATE SCHEMA IF NOT EXISTS travelai"))
         with context.begin_transaction():
             context.run_migrations()
 
