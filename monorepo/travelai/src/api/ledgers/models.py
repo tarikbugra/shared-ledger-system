@@ -7,6 +7,8 @@ from monorepo.travelai.src.api.ledgers.schemas import TravelAILedgerOperation
 
 
 class TravelAILedgerEntryModel(BaseLedgerEntryModel):
+    """Travel AI Ledger Entry Model."""
+
     __tablename__ = "travelai_ledger_entries"
     __table_args__ = {"schema": "travelai"}
 

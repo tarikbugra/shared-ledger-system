@@ -7,6 +7,8 @@ Base = declarative_base()
 
 
 class BaseLedgerEntryModel(Base):
+    """Base Ledger Entry Model."""
+
     __tablename__ = "ledger_entries"
     __abstract__ = True
 
