@@ -11,12 +11,14 @@ sys.path.insert(
     0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../"))
 )
 
+from monorepo.core.config import settings
 from monorepo.core.db.models import Base
 from monorepo.healthai.src.api.ledgers.models import HealthAILedgerEntryModel
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
+config.set_main_option("sqlalchemy.url", settings.get_database_URI())
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
