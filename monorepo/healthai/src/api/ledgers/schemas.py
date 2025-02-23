@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from monorepo.core.ledgers.enums import ensure_shared_operations_included
 from monorepo.core.ledgers.schemas import BaseLedgerOperation, LedgerEntryBase
 
@@ -19,4 +21,4 @@ class HealthAILedgerEntry(LedgerEntryBase):
     operation: HealthAILedgerOperation
     owner_id: str
     nonce: str
-    created_on: str
+    created_on: datetime
