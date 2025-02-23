@@ -1,15 +1,16 @@
-from enum import Enum
+from monorepo.core.ledgers.enums import ensure_shared_operations_included
+from monorepo.core.ledgers.schemas import BaseLedgerOperation, LedgerEntryBase
 
-from monorepo.core.ledgers.schemas import LedgerEntryBase, SharedLedgerOperation
 
-TravelAILedgerOperation = Enum(
-    "TravelAILedgerOperation",
-    {
-        **{item.name: item.value for item in SharedLedgerOperation},
-        "CONTENT_CREATION": "CONTENT_CREATION",
-        "CONTENT_ACCESS": "CONTENT_ACCESS",
-    },
-)
+@ensure_shared_operations_included
+class TravelAILedgerOperation(BaseLedgerOperation):
+    DAILY_REWARD = "DAILY_REWARD"
+    SIGNUP_CREDIT = "SIGNUP_CREDIT"
+    CREDIT_SPEND = "CREDIT_SPEND"
+    CREDIT_ADD = "CREDIT_ADD"
+
+    CONTENT_ACCESS = "CONTENT_ACCESS"
+    CONTENT_CREATION = "CONTENT_CREATION"
 
 
 class TravelAILedgerEntry(LedgerEntryBase):

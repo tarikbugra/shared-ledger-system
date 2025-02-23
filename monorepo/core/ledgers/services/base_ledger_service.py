@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from monorepo.core.config import settings
 from monorepo.core.db.ledger_repository import LedgerRepository
 from monorepo.core.ledgers.schemas import SharedLedgerOperation
@@ -63,7 +65,7 @@ class BaseLedgerService:
         amount: int,
         owner_id: str,
         nonce: str,
-        created_on: str,
+        created_on: datetime,
     ) -> None:
         """
         Update the balance by creating a new ledger entry.

@@ -1,10 +1,15 @@
 import enum
+from typing import Set
 
 from pydantic import BaseModel
 
 
 class BaseLedgerOperation(enum.Enum):
     """Base class for ledger operations."""
+
+    @classmethod
+    def get_operations(cls) -> Set[str]:
+        return {op.value for op in cls}
 
 
 class SharedLedgerOperation(BaseLedgerOperation):
